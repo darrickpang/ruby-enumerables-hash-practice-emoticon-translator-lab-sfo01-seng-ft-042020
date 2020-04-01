@@ -14,7 +14,7 @@ def get_japanese_emoticon(file = "./lib/emoticons.yml", english)
   data = load_library(file)
   data.each do |emotions, symbols|
     data[emotions].each do |symbols, japanese|
-       if data[emotions][symbols].include?(english)
+       if data[emotions][:english] == english
        return data[emotions][:japanese]
       end
     end 
@@ -26,7 +26,7 @@ def get_english_meaning(file = "./lib/emoticons.yml", japanese)
   data = load_library("./lib/emoticons.yml")
   data.each do |emotions, symbols|
     data[emotions].each do |symbols, english|
-      if data[emotions][symbols].include?(japanese)
+      if data[emotions][:japanese] == japanese
         return emotions
       end
     end 
